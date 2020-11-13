@@ -25,24 +25,3 @@ spec:
     - namespace: system-two
       server: https://kubernetes.default.svc
 
----
-
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: system-two
-  namespace: system-two
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
-spec:
-  destination:
-    namespace: system-two
-    server: https://kubernetes.default.svc
-  source:
-    path: production/system-two
-    repoURL: https://github.com/bernos/argocd-demo-environments.git
-    targetRevision: HEAD
-    directory:
-      recurse: true
-  project: system-two
-  
