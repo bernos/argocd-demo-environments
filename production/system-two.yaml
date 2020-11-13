@@ -26,22 +26,23 @@ spec:
       server: https://kubernetes.default.svc
 
 ---
+
 apiVersion: argoproj.io/v1alpha1
-kind: AppProject
+kind: Application
 metadata:
   name: system-two
-  namespace: argocd
-  annotations:
-    argocd.argoproj.io/sync-wave: "-1" # Ensure argo project is created before any apps
+  namespace: system-two
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  description: This is another example system, consisting of multiple independently deployable apps
-  sourceRepos:
-    - '*'
-
-  destinations:
-    - namespace: system-two
-      server: https://kubernetes.default.svc
-
+  destination:
+    namespace: system-two
+    server: https://kubernetes.default.svc
+  source:
+    path: production/system-two
+    repoURL: https://github.com/bernos/argocd-demo-environments.git
+    targetRevision: HEAD
+    directory:
+      recurse: true
+  project: system-two
   
