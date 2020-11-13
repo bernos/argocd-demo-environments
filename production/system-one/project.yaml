@@ -3,6 +3,8 @@ kind: AppProject
 metadata:
   name: system-one
   namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1" # Ensure argo project is created before any apps
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
