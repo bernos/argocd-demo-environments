@@ -1,6 +1,0 @@
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: system-one
-  annotations:
-    argocd.argoproj.io/sync-wave: "-2" # Ensure the namespace is created before the argo project
