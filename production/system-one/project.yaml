@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alphA1
+kind: AppProject
+metadata:
+  name: system-one
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  description: This is an example system, consisting of multiple independently deployable apps
+  sourceRepos:
+    - '*'
+
+  destinations:
+    - namespace: system-one
+      server: https://kubernetes.default.svc
+
+  
