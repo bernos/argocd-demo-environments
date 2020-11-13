@@ -16,4 +16,24 @@ spec:
     - namespace: system-one
       server: https://kubernetes.default.svc
 
+---
+
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: system-one
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: system-one
+    server: https://kubernetes.default.svc
+  source:
+    path: production/system-one
+    repoURL: https://github.com/bernos/argocd-demo-environments.git
+    targetRevision: HEAD
+    directory:
+      recurse: true
+  project: system-one
   
