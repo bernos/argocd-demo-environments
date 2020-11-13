@@ -22,7 +22,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: system-one
-  namespace: argocd
+  namespace: system-one
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
