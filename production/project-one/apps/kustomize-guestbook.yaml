@@ -9,7 +9,7 @@ spec:
   destination:
     namespace: system-one
     server: https://kubernetes.default.svc
-  project: system-one
+  project: project-one
   source:
     path: kustomize-guestbook
     repoURL: https://github.com/argoproj/argocd-example-apps
