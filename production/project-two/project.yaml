@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: system-two
+  name: project-two
   annotations:
     argocd.argoproj.io/sync-wave: "-2" # Ensure the namespace is created before the argo project
 
@@ -10,18 +10,18 @@ metadata:
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: system-two
+  name: project-two
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: "-1" # Ensure argo project is created before any apps
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  description: This is an example system, consisting of multiple independently deployable apps
+  description: This is an example project, consisting of multiple independently deployable apps
   sourceRepos:
     - '*'
 
   destinations:
-    - namespace: system-two
+    - namespace: project-two
       server: https://kubernetes.default.svc
 
