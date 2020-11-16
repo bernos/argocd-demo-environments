@@ -20,4 +20,9 @@ spec:
   description: This is an example project, consisting of multiple independently deployable apps
   sourceRepos:
     - '*'
+  destinations:
+    - namespace: project-two
+      server: https://kubernetes.default.svc
+    - namespace: project-two-my-web-application
+      server: https://kubernetes.default.svc
 
