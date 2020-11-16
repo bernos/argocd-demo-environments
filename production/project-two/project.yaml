@@ -21,7 +21,3 @@ spec:
   sourceRepos:
     - '*'
 
-  destinations:
-    - namespace: project-two
-      server: https://kubernetes.default.svc
-
