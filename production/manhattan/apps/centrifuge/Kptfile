@@ -38,7 +38,7 @@ openAPI:
       x-k8s-cli:
         setter:
           name: repo-path
-          value: https://github.com/bernos/argocd-demo-web-service
+          value: .
           isSet: true
     io.k8s.cli.setters.target-revision:
       x-k8s-cli:

@@ -28,7 +28,7 @@ kpt pkg get https://github.com/bernos/argocd-demo-stencils.git/argocd/applicatio
 kpt cfg set "${environment}/${project}/apps/${application}" project "${project}"
 kpt cfg set "${environment}/${project}/apps/${application}" name "${application}"
 kpt cfg set "${environment}/${project}/apps/${application}" repo "${repo}"
-kpt cfg set "${environment}/${project}/apps/${application}" repo-path "${repo-path}"
+kpt cfg set "${environment}/${project}/apps/${application}" repo-path "${repo_path}"
 
 # Destination namespace for the application. We'll update the AppProject resource yaml to
 # allow apps within the project to be deployed into this namespace
