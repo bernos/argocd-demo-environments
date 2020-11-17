@@ -11,6 +11,6 @@ spec:
     server: https://kubernetes.default.svc
   project: manhattan # {"$kpt-set":"project"}
   source:
-    path: https://github.com/bernos/argocd-demo-web-service # {"$kpt-set":"repo-path"}
+    path: . # {"$kpt-set":"repo-path"}
     repoURL: https://github.com/bernos/argocd-demo-web-service # {"$kpt-set":"repo"}
     targetRevision: HEAD # {"$kpt-set":"target-revision"}
