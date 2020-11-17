@@ -23,6 +23,6 @@ spec:
   destinations:
     - namespace: project-two
       server: https://kubernetes.default.svc
-    - namespace: project-two-my-web-application
+    - namespace: project-two-my-web-app
       server: https://kubernetes.default.svc
 
