@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: centrifuge # {"$kpt-set":"name"}
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: manhattan-centrifuge # {"$kpt-set":"destination-namespace"}
+    server: https://kubernetes.default.svc
+  project: manhattan # {"$kpt-set":"project"}
+  source:
+    path: https://github.com/bernos/argocd-demo-web-service # {"$kpt-set":"repo-path"}
+    repoURL: https://github.com/bernos/argocd-demo-web-service # {"$kpt-set":"repo"}
+    targetRevision: HEAD # {"$kpt-set":"target-revision"}
