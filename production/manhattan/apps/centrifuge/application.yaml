@@ -21,3 +21,7 @@ spec:
     path: . # {"$kpt-set":"repo-path"}
     repoURL: https://github.com/bernos/argocd-demo-web-service # {"$kpt-set":"repo"}
     targetRevision: HEAD # {"$kpt-set":"target-revision"}
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

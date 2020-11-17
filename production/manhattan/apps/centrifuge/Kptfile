@@ -5,7 +5,7 @@ metadata:
 upstream:
   type: git
   git:
-    commit: 1a073767bd721fa3b499a22f7bb29ce9c3371f11
+    commit: 9e7a8c0a2d66ad3cb88277a537b97de7b1ea3d2b
     repo: https://github.com/bernos/argocd-demo-stencils
     directory: /argocd/application
     ref: master
@@ -16,30 +16,30 @@ openAPI:
     io.k8s.cli.setters.name:
       x-k8s-cli:
         setter:
+          isSet: true
           name: name
           required: true
           value: centrifuge
-          isSet: true
     io.k8s.cli.setters.project:
       x-k8s-cli:
         setter:
+          isSet: true
           name: project
           required: true
           value: manhattan
-          isSet: true
     io.k8s.cli.setters.repo:
       x-k8s-cli:
         setter:
+          isSet: true
           name: repo
           required: true
           value: https://github.com/bernos/argocd-demo-web-service
-          isSet: true
     io.k8s.cli.setters.repo-path:
       x-k8s-cli:
         setter:
+          isSet: true
           name: repo-path
           value: .
-          isSet: true
     io.k8s.cli.setters.target-revision:
       x-k8s-cli:
         setter:
