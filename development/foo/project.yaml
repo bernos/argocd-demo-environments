@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: foo # {"$kpt-set":"project"}
+  annotations:
+    argocd.argoproj.io/sync-wave: "-2" # Ensure the namespace is created before the argo project
+---
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: foo # {"$kpt-set":"project"}
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1" # Ensure argo project is created before any apps
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  description: description
