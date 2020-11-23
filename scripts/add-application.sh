@@ -23,6 +23,7 @@ do
   [ -d "${environment}/${project}" ] || { echo "ERROR: '${environment}' does not contain a project named '${project}'"; exit 1;}
   [ -d "${environment}/${project}/apps/${application}" ] && { echo "ERROR: Project '${project}' in the environment '${environment}' already contains an application named '${application}'"; exit 1; }
 
+  mkdir -p "${environment}/${project}/apps"
 
   # Fetch the kpt package containing the argocd Application stencil
   kpt pkg get https://github.com/bernos/argocd-demo-stencils.git/argocd/application "${environment}/${project}/apps/${application}"
