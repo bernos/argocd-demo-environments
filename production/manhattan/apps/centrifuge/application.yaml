@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: manhattan-centrifuge # {"$kpt-set":"destination-namespace"}
+  annotations:
+    argocd.argoproj.io/sync-wave: "-2" # Ensure the namespace is created before the argo project
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: centrifuge # {"$kpt-set":"name"}
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: manhattan-centrifuge # {"$kpt-set":"destination-namespace"}
+    server: https://kubernetes.default.svc
+  project: manhattan # {"$kpt-set":"project"}
+  source:
+    path: . # {"$kpt-set":"repo-path"}
+    repoURL: https://github.com/bernos/argocd-demo-web-service # {"$kpt-set":"repo"}
+    targetRevision: HEAD # {"$kpt-set":"target-revision"}
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
