@@ -1,0 +1,22 @@
+apiVersion: kpt.dev/v1alpha1
+kind: Kptfile
+metadata:
+  name: project
+upstream:
+  type: git
+  git:
+    commit: 9e7a8c0a2d66ad3cb88277a537b97de7b1ea3d2b
+    repo: https://github.com/bernos/argocd-demo-stencils
+    directory: /argocd/project
+    ref: master
+packageMetadata:
+  shortDescription: sample description
+openAPI:
+  definitions:
+    io.k8s.cli.setters.project:
+      x-k8s-cli:
+        setter:
+          name: project
+          required: true
+          value: manhattan
+          isSet: true
