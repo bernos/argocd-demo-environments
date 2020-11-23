@@ -3,21 +3,26 @@ set -eou pipefail
 
 usage() {
   cat << EOF
-Usage: $(basename "${0}") <environment> <project>
+Usage: $(basename "${0}") <project>
 
-Adds a new project to an existing environment environment
+Adds a new project
 EOF
 }
 
-(($# != 2)) && usage
+(($# != 1)) && usage
 
-environment="${1}"
-project="${2}"
+project="${1}"
 
-[ -d "${environment}" ] || { echo "ERROR: '${environment}' is not a valid environment"; exit 1;}
-[ -d "${environment}/${project}" ] && { echo "ERROR: Project '${project}' already exists in the environment '${environment}'"; exit 1; }
+for environment in "development" "production"
+do
+  mkdir -p "${environment}"
 
-kpt pkg get https://github.com/bernos/argocd-demo-stencils.git/argocd/project "${environment}/${project}"
-kpt cfg set "${environment}/${project}" project "${project}"
+  [ -d "${environment}/${project}" ] && { echo "ERROR: Project '${project}' already exists in the environment '${environment}'"; exit 1; }
 
-mkdir "${environment}/${project}/apps"
+  kpt pkg get https://github.com/bernos/argocd-demo-stencils.git/argocd/project "${environment}/${project}"
+  kpt cfg set "${environment}/${project}" project "${project}"
+
+  mkdir "${environment}/${project}/apps"
+done
+
+
