@@ -19,5 +19,8 @@ spec:
   destinations:
   - namespace: manhattan-centrifuge
     server: https://kubernetes.default.svc
+  - namespace: manhattan-big-boy
+    server: https://kubernetes.default.svc
   sourceRepos:
+  - https://github.com/bernos/argocd-demo-web-service
   - https://github.com/bernos/argocd-demo-web-service
